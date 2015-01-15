@@ -1,0 +1,136 @@
+// BEGIN CUT HERE
+// PROBLEM STATEMENT
+// Computers tend to store dates and times as single numbers 
+// which represent the number of seconds or milliseconds 
+// since a particular date.  Your task in this problem is to 
+// write a method whatTime, which takes an int, seconds, 
+// representing the number of seconds since midnight on some 
+// day, and returns a string formatted as "<H>:<M>:<S>".  
+// Here, <H> represents the number of complete hours since 
+// midnight, <M> represents the number of complete minutes 
+// since the last complete hour ended, and <S> represents the 
+// number of seconds since the last complete minute ended.  
+// Each of <H>, <M>, and <S> should be an integer, with no 
+// extra leading 0's.  Thus, if seconds is 0, you should 
+// return "0:0:0", while if seconds is 3661, you should 
+// return "1:1:1".
+// 
+// DEFINITION
+// Class:Time
+// Method:whatTime
+// Parameters:int
+// Returns:string
+// Method signature:string whatTime(int seconds)
+// 
+// 
+// CONSTRAINTS
+// -seconds will be between 0 and 24*60*60 - 1 = 86399, 
+// inclusive.
+// 
+// 
+// EXAMPLES
+// 
+// 0)
+// 0
+// 
+// Returns: "0:0:0"
+// 
+// 1)
+// 3661
+// 
+// Returns: "1:1:1"
+// 
+// 2)
+// 5436
+// 
+// Returns: "1:30:36"
+// 
+// 3)
+// 86399
+// 
+// Returns: "23:59:59"
+// 
+// END CUT HERE
+using System;
+using System.Text;
+using System.Text.RegularExpressions;
+using System.Collections;
+
+public class Time {
+    public string whatTime(int seconds) {
+        string res;
+        return res;
+    }
+
+// BEGIN CUT HERE
+    public static void Main(String[] args) {
+        try  {
+            eq(0,(new Time()).whatTime(0),"0:0:0");
+            eq(1,(new Time()).whatTime(3661),"1:1:1");
+            eq(2,(new Time()).whatTime(5436),"1:30:36");
+            eq(3,(new Time()).whatTime(86399),"23:59:59");
+        } 
+        catch( Exception exx)  {
+            System.Console.WriteLine(exx);
+            System.Console.WriteLine( exx.StackTrace);
+        }
+    }
+    private static void eq( int n, object have, object need) {
+        if( eq( have, need ) ) {
+            Console.WriteLine( "Case "+n+" passed." );
+        } else {
+            Console.Write( "Case "+n+" failed: expected " );
+            print( need );
+            Console.Write( ", received " );
+            print( have );
+            Console.WriteLine();
+        }
+    }
+    private static void eq( int n, Array have, Array need) {
+        if( have == null || have.Length != need.Length ) {
+            Console.WriteLine("Case "+n+" failed: returned "+have.Length+" elements; expected "+need.Length+" elements.");
+            print( have );
+            print( need );
+            return;
+        }
+        for( int i= 0; i < have.Length; i++ ) {
+            if( ! eq( have.GetValue(i), need.GetValue(i) ) ) {
+                Console.WriteLine( "Case "+n+" failed. Expected and returned array differ in position "+i );
+                print( have );
+                print( need );
+                return;
+            }
+        }
+        Console.WriteLine("Case "+n+" passed.");
+    }
+    private static bool eq( object a, object b ) {
+        if ( a is double && b is double ) {
+            return Math.Abs((double)a-(double)b) < 1E-9;
+        } else {
+            return a!=null && b!=null && a.Equals(b);
+        }
+    }
+    private static void print( object a ) {
+        if ( a is string ) {
+            Console.Write("\"{0}\"", a);
+        } else if ( a is long ) {
+            Console.Write("{0}L", a);
+        } else {
+            Console.Write(a);
+        }
+    }
+    private static void print( Array a ) {
+        if ( a == null) {
+            Console.WriteLine("<NULL>");
+        }
+        Console.Write('{');
+        for ( int i= 0; i < a.Length; i++ ) {
+            print( a.GetValue(i) );
+            if( i != a.Length-1 ) {
+                Console.Write(", ");
+            }
+        }
+        Console.WriteLine( '}' );
+    }
+// END CUT HERE
+}

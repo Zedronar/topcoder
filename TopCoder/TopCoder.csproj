@@ -7,8 +7,8 @@
     <ProjectGuid>{372B568C-4638-46B2-AAE6-E4475C06E5EE}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SRM_262_DIV_2</RootNamespace>
-    <AssemblyName>SRM 262 DIV 2</AssemblyName>
+    <RootNamespace>TopCoder</RootNamespace>
+    <AssemblyName>TopCoder</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="DivToZero.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Time.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
